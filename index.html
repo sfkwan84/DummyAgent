@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<script src="./scripts/jquery-3.1.1.min.js"></script>
+<script src="./scripts/json2.js"></script>
+
+<script type="text/javascript">
+
+function enterGate(userId, vehicleNumber)
+{
+	$.ajax({
+		method: 'POST',
+		contentType: 'application/json',
+		dataType: 'json',
+		data: JSON.stringify({ UserId: userId, VehicleNumber: vehicleNumber}),
+		url: 'http://kwan-test01.azurewebsites.net/gateevent/enter',
+		success: function(result){
+			alert('s -' + result);
+		},
+		error: function(xhr,status,error){
+			alert('xhr - ' + xhr);
+			alert('status - ' + status);
+			alert('error - ' + error);
+		}
+	});
+	
+	/*
+	$.post(host + "gateevent/enter",
+    {
+		UserId: userId,
+		VehicleNumber: vehicleNumber
+    },
+    function(data, status){
+		alert('ggg');
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+	*/
+}
+
+function exitGate(userId, vehicleNumber)
+{
+	alert(exit);
+}
+
+</script>
+
+</head>
+
+<body>
+
+<table border="1">
+	<tr align="center">
+		<td>Enter</td>
+		<td>Exit</td>
+	</tr>
+	
+	<tr>	
+		<td>
+			<UL>
+				<li><input onclick="enterGate('CC9709F4-9994-4F96-854F-25712DA7E2EB', 'F1111')" type="button" value="Kwan - F1111" /></li>
+				<li></li>
+				<li></li>
+			</UL>
+		</td>
+		
+		<td>
+			<UL>
+				<li><input onclick="exitGate('CC9709F4-9994-4F96-854F-25712DA7E2EB', 'F1111')" type="button" value="Kwan - F1111" /></li>
+				<li></li>
+				<li></li>
+			</UL>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>
